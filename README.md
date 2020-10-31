@@ -8,9 +8,15 @@ This is important to note because there were times when `irc-message` returned `
 
 irc-message-ts provides an object stream capable of parsing [RFC1459-compliant IRC messages](http://tools.ietf.org/html/rfc2812#section-2.3.1), with support for [IRCv3 message tags](https://github.com/ircv3/ircv3-specifications/blob/master/specification/message-tags-3.2.md). This also includes server-to-server protocols such as TS6, Spanning Tree, and the UnrealIRCd protocol.
 
+## Attribution
+
+As previously stated, this is nothing more than a TypeScript version of [sigkell's irc-message](https://github.com/sigkell/irc-message) library. I'd like to give full credit to him for his original creation.
+
+The reason why this isn't a pull request is this makes breaking and opinionated changes to the library that were mainly to suit my own needs, those being the breaking changes listed above.
+
 ## Installation
 
-    yarn add irc-message-ts
+```yarn add irc-message-ts```
 
 ## Usage
 
@@ -23,6 +29,8 @@ Returns an object stream, taking in `Buffer`s/`String`s of raw IRC data. Data sh
 * `prefix` - message prefix/source
 * `command` - message command/verb
 * `params` - an array of middle and trailing parameters
+* `param` - the first param in the params array, or an empty string
+* `trailing` - the last param in the params array, or an empty string
 
 We don't support options like the [irc-message](https://github.com/sigkell/irc-message) library does right now. I felt like these added un-needed bulk and didn't think it was worth adding two extra packages, as it's pretty easy to abstract this on your own. It would also probably involve overloads on the types which I didn't want to add, the goal is to keep the types extremely simple.
 
@@ -32,10 +40,10 @@ import * as net from "net";
 import {createStream, IRCMessage} from "irc-message-ts";
 
 net.connect(6667, "irc.freenode.net")
-    .pipe(createStream())
-    .on('data', (message: IRCMessage) => {
-        console.log(message)
-    });
+  .pipe(createStream())
+  .on("data", (message: IRCMessage) => {
+    console.log(message)
+  });
 ```
 
 ### `parse(data)`
@@ -45,13 +53,15 @@ You can also access the message parser directly. The parser function expects a s
 ```ts
 import {parse} from "irc-message-ts";
 
-console.log(parse(':hello!sir@madam PRIVMSG #test :Hello, world!'))
+console.log(parse(":hello!sir@madam PRIVMSG #test :Hello, world!"))
 /* {
- *   raw: ':hello!sir@madam PRIVMSG #test :Hello, world!',
+ *   raw: ":hello!sir@madam PRIVMSG #test :Hello, world!",
  *   tags: {},
- *   prefix: 'hello!sir@madam',
- *   command: 'PRIVMSG',
- *   params: ['#test', 'Hello, world!']
+ *   prefix: "hello!sir@madam",
+ *   command: "PRIVMSG",
+ *   params: ["#test", "Hello, world!"],
+ *   param: "#test",
+ *   trailing: "Hello, world!"
  * }
  */
 ```

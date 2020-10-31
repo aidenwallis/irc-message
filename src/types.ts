@@ -4,4 +4,6 @@ export interface IRCMessage {
   tags: Record<string, string>;
   params: string[];
   raw: string;
+  param: string;
+  trailing: string;
 }

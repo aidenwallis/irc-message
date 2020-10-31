@@ -1,7 +1,7 @@
 {
   "name": "irc-message",
   "version": "3.0.2",
-  "description": "Performant, streaming IRC message parser",
+  "description": "Performant, streaming IRC message parser based off of github.com/sigkell/irc-message",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",

@@ -7,6 +7,8 @@ export function parse(line: string): IRCMessage | null {
     command: null,
     prefix: null,
     params: [],
+    param: "",
+    trailing: "",
   };
 
   // position and nextspace are used by the parser as a reference.
@@ -121,6 +123,16 @@ export function parse(line: string): IRCMessage | null {
     if (nextspace === -1) {
       message.params.push(line.slice(position));
       break;
+    }
+  }
+
+  // Add the param property
+  if (message.params.length > 0) {
+    message.param = message.params[0];
+
+    // Add the trailing param
+    if (message.params.length > 1) {
+      message.trailing = message.params[message.params.length - 1];
     }
   }
 

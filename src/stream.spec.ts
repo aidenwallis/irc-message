@@ -14,6 +14,10 @@ describe("stream", () => {
       expect(msg.prefix).toEqual(prefix);
       expect(msg.command).toEqual(command);
       expect(msg.params).toEqual(params);
+      expect(msg.param).toEqual(params[0] || "");
+      expect(msg.trailing).toEqual(
+        params.length > 1 ? params[params.length - 1] : ""
+      );
     }
 
     it("should parse a single IRC message", (done) => {
