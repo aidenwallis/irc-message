@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "lib": ["esnext"],
+    "target": "es5",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "noImplicitThis": true,
+    "module": "CommonJS",
+    "alwaysStrict": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+  }
+}
