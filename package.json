@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
-    "lint": "eslit . --ext .js,.ts",
+    "lint": "eslint . --ext .js,.ts",
     "test": "jest"
   },
   "repository": {
