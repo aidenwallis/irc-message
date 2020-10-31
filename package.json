@@ -1,13 +1,17 @@
 {
   "name": "irc-message",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Performant, streaming IRC message parser based off of github.com/sigkell/irc-message",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --ext .js,.ts",
     "test": "jest"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/aidenwallis/irc-message.git"
