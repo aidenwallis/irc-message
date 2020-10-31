@@ -1,5 +1,5 @@
 {
-  "name": "irc-message",
+  "name": "irc-message-ts",
   "version": "3.0.3",
   "description": "Performant, streaming IRC message parser based off of github.com/sigkell/irc-message",
   "main": "dist/index.js",
