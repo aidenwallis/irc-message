@@ -1,14 +1,20 @@
 {
   "name": "irc-message",
-  "version": "3.0.2",
-  "description": "Performant, streaming IRC message parser",
-  "main": "index.js",
+  "version": "3.0.3",
+  "description": "Performant, streaming IRC message parser based off of github.com/sigkell/irc-message",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "mocha"
+    "build": "tsc",
+    "lint": "eslint . --ext .js,.ts",
+    "test": "jest"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/expr/irc-message.git"
+    "url": "https://github.com/aidenwallis/irc-message.git"
   },
   "keywords": [
     "irc",
@@ -16,18 +22,36 @@
     "parser",
     "chat"
   ],
-  "author": "Fionn Kelleher <me@fionn.co>",
+  "author": "Aiden Wallis <aiden@aidenwallis.co.uk>",
   "license": "BSD-2-Clause",
   "bugs": {
-    "url": "https://github.com/expr/irc-message/issues"
+    "url": "https://github.com/aidenwallis/irc-message/issues"
   },
-  "homepage": "https://github.com/expr/irc-message",
+  "homepage": "https://github.com/aidenwallis/irc-message",
   "dependencies": {
-    "iso8601-convert": "^1.0.0",
-    "through2": "^0.6.3",
-    "irc-prefix-parser": "^1.0.1"
+    "through2": "^4.0.2"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-typescript"
+    ]
+  },
+  "jest": {
+    "verbose": true
   },
   "devDependencies": {
-    "mocha": "^2.1.0"
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-typescript": "^7.12.1",
+    "@types/jest": "^26.0.15",
+    "@types/through2": "^2.0.36",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "eslint": "^7.12.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "jest": "^26.6.1",
+    "mocha": "^8.2.0",
+    "prettier": "^2.1.2",
+    "typescript": "^4.0.5"
   }
 }
